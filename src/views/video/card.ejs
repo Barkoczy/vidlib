@@ -1,0 +1,9 @@
+<div class="col-12 col-md-6 col-xxl-4 mb-4">
+  <a href="/video/<%= video.shortUUID %>" class="video-card card bg-dark shadow">
+    <img src="<%= videoBasePath %><%= video.previewPath %>" class="card-img-top" alt="<%= video.name %>" rel="nofollow">
+    <div class="card-body">
+      <h5 class="card-title fs-4"><%= video.name %></h5>
+      <p class="card-text fs-6"><%= video.description %></p>
+    </div>
+  </a>
+</div>

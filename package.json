@@ -1,0 +1,33 @@
+{
+  "name": "vidlib",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js"
+  },
+  "keywords": [
+    "express",
+    "ejs",
+    "bootstrap",
+    "peertube",
+    "peertube-api",
+    "video library"
+  ],
+  "author": "Henrich Barkoczy",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^1.2.2",
+    "cookie-parser": "^1.4.6",
+    "dotenv": "^16.0.3",
+    "ejs": "^3.1.8",
+    "express": "^4.18.2",
+    "fs": "^0.0.1-security",
+    "jsonwebtoken": "^9.0.0",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+}
