@@ -1,5 +1,7 @@
+// @modules
 const jwt = require('jsonwebtoken')
 
+// @exports
 exports.cookieJwtAuth = (req, res, next) => {
   const token = req.signedCookies._secure
 

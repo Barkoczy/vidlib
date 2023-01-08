@@ -1,4 +1,5 @@
 // @modules
+require('dotenv').config()
 const jwt = require('jsonwebtoken')
 const peertubeAPI = require('../utils/peertube-api')
 
