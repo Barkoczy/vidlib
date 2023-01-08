@@ -18,10 +18,10 @@ module.exports = async (req, res) => {
   }
 
   const user = await peertubeAPI.account()
-  const token = jwt.sign(user, process.env.JWT_SECRET, { expiresIn: '1h' })
+  const token = jwt.sign(user, process.env.JWT_SECRET, { expiresIn: process.env.JWT_EXPIRE })
 
   res.cookie('_secure', token, {
-    maxAge: 1000000,
+    maxAge: process.env.COOKIE_MAXAGE,
     httpOnly: true,
     secure: true,
     signed: true,
