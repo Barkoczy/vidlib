@@ -12,15 +12,19 @@ app.use(
     extended: true,
   })
 )
-app.use(cookieParser(process.env.COOKIE_SECRET))
-app.use('/static', express.static(path.join(__dirname, '../public')))
-app.set('views', path.join(__dirname, '/views'))
-app.set('view engine', 'ejs')
 app.use((req, res, next) => {
   res.locals.appname = process.env.APP_NAME
   res.locals.videoBasePath = 'https://'+process.env.PEERTUBE_DOMAIN
   return next();
 })
+app.use(cookieParser(process.env.COOKIE_SECRET))
+app.use('/static', express.static(path.join(__dirname, '../public')))
+app.set('views', path.join(__dirname, '/views'))
+app.set('view engine', 'ejs')
+app.set('trust proxy', 1)
+
+console.log(__dirname)
+
 
 // @middlewares
 const { cookieJwtAuth } = require('./middleware/auth')

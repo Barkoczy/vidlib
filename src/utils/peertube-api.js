@@ -1,6 +1,7 @@
 // @modules
 require('dotenv').config()
 const fs = require('fs')
+const path = require('path')
 const axios = require('axios')
 
 // @credentials
@@ -68,7 +69,7 @@ async function client() {
 async function auth() {
   try {
     credentials = JSON.parse(
-      fs.readFileSync('./credentials.json', 'utf8')
+      fs.readFileSync(path.resolve(__dirname, '../../credentials.json'), 'utf8')
     )
   } catch (err) {
     console.log(`Error reading credentials from disk: ${err}`)
@@ -100,7 +101,7 @@ async function auth() {
   }
 
   try {
-    fs.writeFileSync('./credentials.json', JSON.stringify(credentials))
+    fs.writeFileSync(path.resolve(__dirname, '../../credentials.json'), JSON.stringify(credentials))
   } catch (err) {
     console.log(`Error writting credentials on disk: ${err}`)
   }
