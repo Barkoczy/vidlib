@@ -23,8 +23,8 @@ module.exports = async (req, res) => {
   res.cookie('_secure', token, {
     maxAge: 1000000,
     httpOnly: true,
-    secure: 'prod' === process.env.NODE_ENV,
-    signed: 'prod' === process.env.NODE_ENV,
+    secure: true,
+    signed: true,
   })
 
   return res.redirect('/')
