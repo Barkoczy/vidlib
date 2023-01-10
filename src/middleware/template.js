@@ -11,7 +11,8 @@ exports.templateVariables = (req, res, next) => {
   res.locals.user = user
   res.locals.applang = process.env.APP_LANG
   res.locals.appname = process.env.APP_NAME
-  res.locals.peertubeDomain = 'https://'+process.env.PEERTUBE_DOMAIN
+  res.locals.authmode = process.env.AUTH_MODE
+  res.locals.domain = process.env.PEERTUBE_DOMAIN
 
   return next()
 }

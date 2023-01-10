@@ -1,21 +1,29 @@
 <form action="/signin" method="post" class="form-signin text-center">
   <i class="fa-solid fa-circle-play fs-1"></i>
-  <h1 class="display-6 mt-3 mb-3 fw-normal"><%= appname %></h1>
+  <h1 class="display-6 fw-semibold mt-3 mb-3"><%= appname %></h1>
   <% if (error) { %>
     <div class="alert alert-danger" role="alert">
       <%= error %>
     </div>    
   <% } %>
+  <% if ('peertube' === authmode) { %>
+    <div class="form-floating">
+      <input type="text" name="domain" value="<%= domain %>" class="form-control" id="floatingInput" placeholder="Doména inštancie" required>
+      <label for="floatingInput">Doména inštancie</label>
+    </div>    
+  <% } %>
   <div class="form-floating">
-    <input type="text" name="username" value="" class="form-control" id="floatingInput" placeholder="Uživatelské meno">
+    <input type="text" name="username" value="" class="form-control" id="floatingInput" placeholder="Uživatelské meno" required>
     <label for="floatingInput">Uživatelské meno</label>
   </div>
   <div class="form-floating">
-    <input type="password" name="password" value="" class="form-control" id="floatingPassword" placeholder="Heslo">
+    <input type="password" name="password" value="" class="form-control" id="floatingPassword" placeholder="Heslo" required>
     <label for="floatingPassword">Heslo</label>
   </div>
-  <button type="submit" class="w-100 btn btn-md btn-secondary">
+  <button type="submit" class="w-100 btn btn-md btn-outline-success mt-3">
     Prihlásiť sa
   </button>
-  <p class="mt-2 mb-2 text-muted">&copy;&nbsp;2023</p>
+  <p class="mt-2 mb-2 text-muted fs-6">
+    &copy;&nbsp;2023
+  </p>
 </form>

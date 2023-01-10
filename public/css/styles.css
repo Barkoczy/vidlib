@@ -96,21 +96,17 @@ NAVBAR
 /*
 FORM
 */
-.form-signin .form-floating:focus-within {
+.form-signin svg {
+  color: rgb(25, 135, 84);
+}
+.form-signin input:focus-within {
   z-index: 2;
-}
-.form-signin input[type="text"] {
-  margin-bottom: -1px;
-  border-bottom-right-radius: 0;
-  border-bottom-left-radius: 0;
-}
-.form-signin input[type="password"] {
-  margin-bottom: 10px;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
 }
 .form-floating > label {
   color: #000;
+}
+.form-floating > input {
+  border-radius: 0;
 }
 @media screen and (min-width: 420px) {
   .form-signin {

@@ -13,7 +13,7 @@
     <div class="d-flex align-items-center justify-content-start">
       <a href="/account" class="d-none d-md-inline-block btn btn-outline-success align-items-center justify-content-start">
         <%if (user.avatar) { %>
-          <img src="<%= peertubeDomain %><%= user.avatar.path %>" class="avatar" rel="nofollow">
+          <img src="https://<%= domain %><%= user.avatar.path %>" class="avatar" rel="nofollow">
         <% } %>
         <span class="ps-2 text-white"><%= user.displayName %></span>
       </a>
