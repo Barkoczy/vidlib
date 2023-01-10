@@ -1,9 +1,17 @@
-<nav class="navbar navbar-dark bg-dark shadow fixed-top">
-  <div class="container-fluid">
+<header class="navbar navbar-dark bg-dark navbar-expand-lg sticky-top shadow">
+  <nav class="container-fluid flex-wrap flex-lg-nowrap">
     <a class="navbar-brand" href="/">
       <i class="fa-solid fa-circle-play"></i>
       <span>VidLib</span>
     </a>
-    <a href="/signout" class="btn btn-outline-secondary">Odhlásiť sa</a>
-  </div>
-</nav>
+    <form class="d-none d-md-flex" role="search">
+      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success" type="submit">
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </button>
+    </form>
+    <a href="/signout" class="btn btn-outline-secondary">
+      <i class="fa-solid fa-right-from-bracket"></i>
+    </a>
+  </nav>
+</header>

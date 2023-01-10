@@ -4,31 +4,12 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title><%= appname %></title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/css/bootstrap.min.css" integrity="sha512-SbiR/eusphKoMVVXysTKG/7VseWii+Y3FdHrt0EpKgpToZeemhqHeZeLWLhJutz/2ut2Vw1uQEj2MbRF+TVBUA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="/static/css/styles.css">
+    <%- include('layout/header/styles'); %>
   </head>
   <body class="bg-dark">
     <main class="d-flex align-items-center justify-content-center pt-5">
-      <form action="/signin" method="post" class="form-signin text-center">
-        <i class="fa-solid fa-circle-play fs-1"></i>
-        <h1 class="display-6 mt-3 mb-3 fw-normal"><%= appname %></h1>
-        <div class="form-floating">
-          <input type="text" name="username" value="" class="form-control" id="floatingInput" placeholder="Uživatelské meno">
-          <label for="floatingInput">Uživatelské meno</label>
-        </div>
-        <div class="form-floating">
-          <input type="password" name="password" value="" class="form-control" id="floatingPassword" placeholder="Heslo">
-          <label for="floatingPassword">Heslo</label>
-        </div>
-        <button type="submit" class="w-100 btn btn-md btn-secondary">
-          Prihlásiť sa
-        </button>
-        <p class="mt-2 mb-2 text-muted">&copy;&nbsp;2023</p>
-      </form>
+      <%- include('components/form/signin'); %>
     </main>    
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/js/all.min.js" integrity="sha512-rpLlll167T5LJHwp0waJCh3ZRf7pO6IT1+LZOhAyP6phAirwchClbTZV3iqL3BMrVxIYRbzGTpli4rfxsCK6Vw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/js/bootstrap.bundle.min.js" integrity="sha512-i9cEfJwUwViEPFKdC1enz4ZRGBj8YQo6QByFTF92YXHi7waCqyexvRD75S5NVTsSiTv7rKWqG9Y5eFxmRsOn0A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D" crossorigin="anonymous" async></script>
+    <%- include('layout/footer/scripts'); %>
   </body>
 </html>

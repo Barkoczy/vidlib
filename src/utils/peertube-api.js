@@ -6,65 +6,87 @@ const axios = require('axios')
 
 // @credentials
 let credentials = {
-  "access_token": "",
-  "refresh_token": "",
-  "token_type": "",
-  "expires_in": 0,
-  "refresh_token_expires_in": 0
+  "token": "",
+  "expires_in": 0
 }
 
+// @func
 async function video(videoId) {
-  const res = await axios.get(
-    `https://${process.env.PEERTUBE_DOMAIN}/api/v1/videos/${videoId}`
-  )
-  const res2 = await axios.get(
-    `https://${process.env.PEERTUBE_DOMAIN}/api/v1/videos/${videoId}/description`
-  )
-
-  return {content: res2.data.description, ...res.data}
+  try {
+    const res = await axios.get(
+      `https://${process.env.PEERTUBE_DOMAIN}/api/v1/videos/${videoId}`
+    )
+    const res2 = await axios.get(
+      `https://${process.env.PEERTUBE_DOMAIN}/api/v1/videos/${videoId}/description`
+    )
+    return {content: res2.data.description, ...res.data}
+  } catch (err) {
+    console.error(`Peertube API Error response: ${err}`)
+  }
 }
 async function feeds() {
-  const params = {
-    isLocal: true,
-    isLive: false,
-    nsfw: false,
-    sort: '-createdAt',
-    include: 1,
-    privacyOneOf: 2,
+  try {
+    const limit = parseInt(
+      process.env.PEERTUBE_FEED_LIMIT
+    )
+    const count = 0 < limit && limit <= 100 ? limit : 15
+    const params = {
+      isLocal: true,
+      isLive: false,
+      nsfw: false,
+      sort: '-createdAt',
+      include: 1,
+      privacyOneOf: 2,
+      count,
+    }
+    const res = await axios.get(
+      `https://${process.env.PEERTUBE_DOMAIN}/api/v1/accounts/${process.env.PEERTUBE_USERNAME}/videos`
+    , {params})
+  
+    return res.data
+  } catch (err) {
+    console.error(`Peertube API Error response: ${err}`)
   }
-  const res = await axios.get(
-    `https://${process.env.PEERTUBE_DOMAIN}/api/v1/accounts/${process.env.PEERTUBE_USERNAME}/videos`
-  , {params})
-
-  return res.data
 }
 async function account() {
-  const res = await axios.get(
-    `https://${process.env.PEERTUBE_DOMAIN}/api/v1/accounts/${process.env.PEERTUBE_USERNAME}`
-  )
-  return res.data
+  try {
+    const res = await axios.get(
+      `https://${process.env.PEERTUBE_DOMAIN}/api/v1/accounts/${process.env.PEERTUBE_USERNAME}`
+    )
+    return res.data
+  } catch (err) {
+    console.error(`Peertube API Error response: ${err}`)
+  }
 }
 async function token(client_id, client_secret) {
-  const params = new URLSearchParams({
-    client_id,
-    client_secret,
-    grant_type: 'password',
-    response_type: 'code',
-    username: process.env.PEERTUBE_USERNAME,
-    password: process.env.PEERTUBE_PASSWORD
-  })
-
-  const res = await axios.post(
-    `https://${process.env.PEERTUBE_DOMAIN}/api/v1/users/token`
-  , params)
-
-  return res.data
+  try {
+    const params = new URLSearchParams({
+      client_id,
+      client_secret,
+      grant_type: 'password',
+      response_type: 'code',
+      username: process.env.PEERTUBE_USERNAME,
+      password: process.env.PEERTUBE_PASSWORD
+    })
+  
+    const res = await axios.post(
+      `https://${process.env.PEERTUBE_DOMAIN}/api/v1/users/token`
+    , params)
+  
+    return res.data
+  } catch (err) {
+    console.error(`Peertube API Error response: ${err}`)
+  }
 }
 async function client() {
-  const res = await axios.get(
-    `https://${process.env.PEERTUBE_DOMAIN}/api/v1/oauth-clients/local`
-  )
-  return res.data
+  try {
+    const res = await axios.get(
+      `https://${process.env.PEERTUBE_DOMAIN}/api/v1/oauth-clients/local`
+    )
+    return res.data
+  } catch (err) {
+    console.error(`Peertube API Error response: ${err}`)
+  }
 }
 async function auth() {
   try {
@@ -72,11 +94,11 @@ async function auth() {
       fs.readFileSync(path.resolve(__dirname, '../../credentials.json'), 'utf8')
     )
   } catch (err) {
-    console.log(`Error reading credentials from disk: ${err}`)
+    console.error(`Error reading credentials from disk: ${err}`)
   }
 
-  if (0 !== credentials.expires_in && Date.now() >= credentials.expires_in * 1000) {
-    axios.defaults.headers.common['Authorization'] = `Bearer ${credentials.access_token}`
+  if (0 !== credentials.expires_in && Date.now() <= credentials.expires_in) {
+    axios.defaults.headers.common['Authorization'] = `Bearer ${credentials.token}`
     return
   }
 
@@ -85,28 +107,22 @@ async function auth() {
   } = await client()
 
   const {
-    access_token,
-    refresh_token,
-    token_type,
-    expires_in,
-    refresh_token_expires_in
+    access_token, expires_in
   } = await token(client_id, client_secret)
 
   credentials = {
-    access_token,
-    refresh_token,
-    token_type,
-    expires_in,
-    refresh_token_expires_in
+    token: access_token,
+    expires_in: Date.now() + (expires_in * 1000)
   }
 
   try {
     fs.writeFileSync(path.resolve(__dirname, '../../credentials.json'), JSON.stringify(credentials))
   } catch (err) {
-    console.log(`Error writting credentials on disk: ${err}`)
+    console.error(`Error writting credentials on disk: ${err}`)
   }
 }
 
+// @exports
 module.exports = {
   video,
   feeds,

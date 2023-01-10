@@ -13,6 +13,7 @@ app.use(
   })
 )
 app.use((req, res, next) => {
+  res.locals.applang = process.env.APP_LANG
   res.locals.appname = process.env.APP_NAME
   res.locals.videoBasePath = 'https://'+process.env.PEERTUBE_DOMAIN
   return next();
