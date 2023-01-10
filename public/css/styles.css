@@ -5,6 +5,10 @@ FONT
 /*
 BODY
 */
+html,
+body {
+  height: 100vh;
+}
 body {
   font-family: 'Poppins', sans-serif;
   font-size: 1.1rem;
@@ -17,6 +21,14 @@ TYPOGRAPHY
 a {
   text-decoration: none;
   color: #fff;
+}
+/*
+CONTAINER
+*/
+@media screen and (min-width: 1200px) and (max-height: 860px) {
+  .container.video-container {
+    max-width: 940px;
+  }
 }
 /*
 FORM
