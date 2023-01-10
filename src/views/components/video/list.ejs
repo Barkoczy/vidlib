@@ -1,3 +1,5 @@
-<% videos.forEach(function(video){ %>
-  <%- include('card', {video: video}); %>
-<% }); %>
+<% if(typeof videos !== 'undefined' && videos.length > 0){ %>
+  <% videos.forEach(function(video){ %>
+    <%- include('card', {video: video}); %>
+  <% }); %>      
+<% } %>

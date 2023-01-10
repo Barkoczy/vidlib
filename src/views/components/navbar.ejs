@@ -1,17 +1,25 @@
-<header class="navbar navbar-dark bg-dark navbar-expand-lg sticky-top shadow">
-  <nav class="container-fluid flex-wrap flex-lg-nowrap">
-    <a class="navbar-brand" href="/">
+<header class="navbar navbar-dark bg-dark fixed-top shadow">
+  <nav class="container-fluid">
+    <a class="navbar-brand d-flex align-items-center" href="/">
       <i class="fa-solid fa-circle-play"></i>
-      <span>VidLib</span>
+      <span class="ps-2 fw-semibold">VidLib</span>
     </a>
-    <form class="form-search d-none d-md-flex" role="search">
-      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+    <form action="/search" method="get" class="form-search d-none d-md-flex" role="search">
+      <input class="form-control me-2" type="search" name="q" value="" placeholder="Hľadať" aria-label="Search">
       <button class="btn btn-outline-success" type="submit">
         <i class="fa-solid fa-magnifying-glass"></i>
       </button>
     </form>
-    <a href="/signout" class="btn btn-outline-secondary">
-      <i class="fa-solid fa-right-from-bracket"></i>
-    </a>
+    <div class="d-flex align-items-center justify-content-start">
+      <a href="/account" class="d-none d-md-inline-block btn btn-outline-success align-items-center justify-content-start">
+        <%if (user.avatar) { %>
+          <img src="<%= peertubeDomain %><%= user.avatar.path %>" class="avatar" rel="nofollow">
+        <% } %>
+        <span class="ps-2"><%= user.displayName %></span>
+      </a>
+      <a href="/signout" class="btn btn-outline-secondary ms-3">
+        <i class="fa-solid fa-right-from-bracket"></i>
+      </a>
+    </div>
   </nav>
 </header>

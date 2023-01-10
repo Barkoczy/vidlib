@@ -1,0 +1,45 @@
+<section class="row justify-content-center">
+  <div class="col-12 col-md-3">
+    <select id="vf-include" class="form-select" aria-label="Sort">
+      <option value="0" selected>Publikované</option>
+      <option value="1">Nepublikované</option>
+    </select>
+  </div>
+  <div class="col-12 col-md-3">
+    <select id="vf-privacyOneOf" class="form-select" aria-label="Sort">
+      <option value="1" selected>Verejné</option>
+      <option value="2">Nezobrazené</option>
+      <option value="3">Súkromné</option>
+      <option value="4">Interné</option>
+    </select>
+  </div>
+  <div class="col-12 col-md-2">
+    <select id="vf-sort" class="form-select" aria-label="Sort">
+      <option value="-best">best</option>
+      <option value="-hot">hot</option>
+      <option value="-trending">trending</option>
+      <option value="-likes">likes</option>
+      <option value="-views">views</option>
+      <option value="name">A-Z</option>
+      <option value="-name">Z-A</option>
+      <option value="-duration">duration</option>
+      <option value="-publishedAt">publishedAt</option>
+      <option value="-createdAt" selected>createdAt</option>
+    </select>
+  </div>
+  <div class="col-12 col-md-1">
+    <select id="vf-count" class="form-select" aria-label="Count">
+      <option value="15" selected>15</option>
+      <option value="30">30</option>
+      <option value="40">40</option>
+      <option value="60">60</option>
+      <option value="80">80</option>
+      <option value="100">100</option>
+    </select>
+  </div>
+  <div class="col-12 col-md-1">
+    <button type="button" id="vf-reload" class="btn btn-success">
+      <i class="fa-solid fa-arrows-rotate"></i>
+    </button>
+  </div>
+</section>

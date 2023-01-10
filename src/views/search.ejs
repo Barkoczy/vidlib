@@ -3,24 +3,24 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title><%= appname %></title>
+    <title><%= query %> | <%= appname %></title>
     <%- include('layout/header/favicon'); %>
     <%- include('layout/header/styles'); %>
   </head>
   <body class="bg-dark">
     <%- include('components/navbar'); %>
     <main class="container pt-3 pt-md-5 pb-3">
-      <header class="d-none d-md-block bg-success bg-gradient rounded-2 mb-3">
-        <section class="bg-shape-7 px-4 py-3">
-          <%- include('components/video/filter'); %>
+      <% if(videos.length > 0){ %>
+        <section class="row" data-masonry='{"percentPosition": true }'>
+          <%- include('components/video/list'); %>
         </section>
-      </header>
-      <section id="video-list" class="row">
-        <%- include('components/video/list'); %>
-      </section>
-    </main>
+      <% } else{ %>  
+        <div class="alert alert-secondary" role="alert">
+          Pre hľadaný výraz - <%= query %> - neboli nájdené žiadne výsledky
+        </div>        
+      <% } %>
+    </main>    
     <%- include('layout/footer/scripts'); %>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/5.0.0/imagesloaded.pkgd.min.js" integrity="sha512-kfs3Dt9u9YcOiIt4rNcPUzdyNNO9sVGQPiZsub7ywg6lRW5KuK1m145ImrFHe3LMWXHndoKo2YRXWy8rnOcSKg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D" crossorigin="anonymous" async></script>
     <script src="/static/js/app.js"></script>
   </body>

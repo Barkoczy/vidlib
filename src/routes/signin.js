@@ -7,22 +7,19 @@ const peertubeAPI = require('../utils/peertube-api')
 module.exports = async (req, res) => {
   const { username, password } = req.body
 
-  if (process.env.PEERTUBE_USERNAME !== username) {
-    return res.status(403).json({
-      error: "Invalid login"
-    })
-  }
-  if (process.env.PEERTUBE_PASSWORD !== password) {
-    return res.status(403).json({
-      error: "Invalid login"
-    })
+  const data = await peertubeAPI.login(
+    username, password
+  )
+
+  if (data.hasOwnProperty('error')) {
+    const params = new URLSearchParams({error: data.error})
+    return res.redirect('/signin?'+params.toString())
   }
 
-  const user = await peertubeAPI.account()
-  const token = jwt.sign(user, process.env.JWT_SECRET, { expiresIn: process.env.JWT_EXPIRE })
+  const token = jwt.sign(data.user, process.env.JWT_SECRET, { expiresIn: data.expiresIn })
 
   res.cookie('_secure', token, {
-    maxAge: process.env.COOKIE_MAXAGE,
+    maxAge: data.expiresIn,
     httpOnly: true,
     secure: true,
     signed: true,

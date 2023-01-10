@@ -3,14 +3,15 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title><%= appname %></title>
-    <%- include('layout/header/favicon'); %>
+    <title><%= user.displayName %> | <%= appname %></title>
     <%- include('layout/header/styles'); %>
   </head>
   <body class="bg-dark">
-    <main class="d-flex align-items-center justify-content-center pt-5">
-      <%- include('components/form/signin'); %>
+    <%- include('components/navbar'); %>
+    <main class="container pt-4 pb-3">
+      
     </main>    
     <%- include('layout/footer/scripts'); %>
+    <script src="/static/js/app.js"></script>
   </body>
 </html>

@@ -1,6 +1,11 @@
 <form action="/signin" method="post" class="form-signin text-center">
   <i class="fa-solid fa-circle-play fs-1"></i>
   <h1 class="display-6 mt-3 mb-3 fw-normal"><%= appname %></h1>
+  <% if (error) { %>
+    <div class="alert alert-danger" role="alert">
+      <%= error %>
+    </div>    
+  <% } %>
   <div class="form-floating">
     <input type="text" name="username" value="" class="form-control" id="floatingInput" placeholder="Uživatelské meno">
     <label for="floatingInput">Uživatelské meno</label>
