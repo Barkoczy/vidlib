@@ -49,6 +49,11 @@ FORM
 .form-floating > label {
   color: #000;
 }
+@media screen and (min-width: 420px) {
+  .form-signin {
+    min-width: 300px;
+  }
+}
 /*
 VIDEO CARD
 */
