@@ -3,7 +3,7 @@ Video library for videos of an account with usage peertube-api.
 
 ## Getting Started
 
-First, create .env file and fill empty fields and if needed edit default setup values:
+First, create .env file and fill empty fields. If needed edit default setup values:
 
 ```bash
 SERVER_PORT=4848
