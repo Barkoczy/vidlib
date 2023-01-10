@@ -1,7 +1,7 @@
 {
   "name": "vidlib",
   "version": "1.0.0",
-  "description": "",
+  "description": "Video library for videos of an account with usage peertube-api.",
   "main": "src/server.js",
   "scripts": {
     "start": "node src/server.js",
