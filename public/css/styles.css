@@ -28,6 +28,17 @@ body {
 /*
 FORMAT
 */
+.form-control:focus,
+.form-control:active:focus,
+.form-control.active:focus,
+.form-control.focus,
+.form-control:active.focus,
+.form-control.active.focus {
+  border-color: #ccc;
+  outline: 0;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
 .form-select:focus,
 .form-select:active:focus,
 .form-select.active:focus,
