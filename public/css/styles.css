@@ -53,7 +53,7 @@ FORM
   .form-signin {
     min-width: 300px;
   }
-  header.form-search {
+  header .form-search {
     min-width: 360px;
   }
 }
