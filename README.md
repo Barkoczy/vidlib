@@ -8,3 +8,10 @@ First, create .env file and fill empty fields. If needed edit default setup valu
 ```bash
 npm run dev
 ```
+
+## Authorization mode
+
+* Strict
+* Credentials
+* Peertube
+* Mixed
