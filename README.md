@@ -1,5 +1,5 @@
 # VidLib
-Video library for videos of an account based on Peertube REST API with can usage creator portal. Are you a creator trying to set up memberships? Well, you've come to the right place. This simple app will show you how to create and manage your own memberships.
+Video library for videos of an account based on PeerTube REST API with can usage creator portal. Are you a creator trying to set up memberships? Well, you've come to the right place. This simple app will show you how to create and manage your own memberships.
 
 ## What is PeerTube?
 
