@@ -1,3 +1,11 @@
+// @var
+let videFilterOptions = {
+  include: 0,
+  privacyOneOf: 1,
+  count: 15,
+  sort: '-createdAt'
+}
+
 // @init
 $(function() {
   videoFilter()
@@ -21,7 +29,7 @@ function videoFilter() {
   if (!filter.sort.length) return
   if (!filter.reload.length) return
 
-  let data = {
+  videFilterOptions = {
     include: filter.include.val(),
     privacyOneOf: filter.privacyOneOf.val(),
     count: filter.count.val(),
@@ -29,20 +37,20 @@ function videoFilter() {
   }
 
   filter.include.on('change', function() {
-    data.include = $(this).val()
-    loadVideos(list, data)
+    videFilterOptions.include = $(this).val()
+    loadFilterVideos(list, videFilterOptions)
   })
   filter.privacyOneOf.on('change', function() {
-    data.privacyOneOf = $(this).val()
-    loadVideos(list, data)
+    videFilterOptions.privacyOneOf = $(this).val()
+    loadFilterVideos(list, videFilterOptions)
   })
   filter.count.on('change', function() {
-    data.count = $(this).val()
-    loadVideos(list, data)
+    videFilterOptions.count = $(this).val()
+    loadFilterVideos(list, videFilterOptions)
   })
   filter.sort.on('change', function() {
-    data.sort = $(this).val()
-    loadVideos(list, data)
+    videFilterOptions.sort = $(this).val()
+    loadFilterVideos(list, videFilterOptions)
   })
   filter.reload.on('click', function() {
     filter.include.find('option[value="0"]').prop("selected", true)
@@ -50,7 +58,7 @@ function videoFilter() {
     filter.count.find('option[value="15"]').prop("selected", true)
     filter.sort.find('option[value="-createdAt"]').prop("selected", true)
     
-    loadVideos(list, {
+    loadFilterVideos(list, {
       include: 0,
       privacyOneOf: 1,
       count: 15,
@@ -58,9 +66,9 @@ function videoFilter() {
     })
   })
 
-  loadVideos(list, data)
+  loadFilterVideos(list, videFilterOptions)
 }
-function loadVideos(list, data) {
+function loadFilterVideos(list, data) {
   $.ajax({
     url: '/filter',
     type: 'POST',
@@ -78,6 +86,57 @@ function loadVideos(list, data) {
       console.error(e)
     },
   });
+}
+function videoJSPlayer(source) {
+  document.addEventListener('DOMContentLoaded', () => {
+    const video = document.getElementById('jsplayer')
+
+    if (!Hls.isSupported()) return
+
+    const defaultOptions = {
+      ratio: '16:9',
+      autoplay: true,
+    }
+    const hls = new Hls()
+
+    hls.loadSource(source)
+    hls.on(Hls.Events.MANIFEST_PARSED, function(event, data) {
+      const availableQualities = hls.levels.map((l) => l.height)
+      defaultOptions.controls = [
+        'play-large', // The large play button in the center
+        'restart', // Restart playback
+        'rewind', // Rewind by the seek time (default 10 seconds)
+        'play', // Play/pause playback
+        'fast-forward', // Fast forward by the seek time (default 10 seconds)
+        'progress', // The progress bar and scrubber for playback and buffering
+        'current-time', // The current time of playback
+        'duration', // The full duration of the media
+        'mute', // Toggle mute
+        'volume', // Volume control
+        'captions', // Toggle captions
+        'settings', // Settings menu
+        'pip', // Picture-in-picture (currently Safari only)
+        'airplay', // Airplay (currently Safari only)
+        'fullscreen', // Toggle fullscreen
+      ]
+      defaultOptions.quality = {
+        default: availableQualities[availableQualities.length - 1],
+        options: availableQualities,
+        forced: true,
+        onChange: (e) => updateVideoJSPlayerQuality(e)
+      }
+      new Plyr(video, defaultOptions)
+    })
+    hls.attachMedia(video)
+    window.hls = hls
+  })
+}
+function updateVideoJSPlayerQuality(quality) {
+ window.hls.levels.forEach((level, levelIndex) => {
+  if (level.height === quality) {
+    window.hls.currentLevel = levelIndex
+  }
+ })
 }
 function videoWebTorrentPlayer() {
   const client = new WebTorrent()

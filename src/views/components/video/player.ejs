@@ -1,9 +1,15 @@
-<% if('embed' === playermode){ %>
-  <%- include('player/embed'); %>      
-<% } %>
-<% if('jsplayer' === playermode){ %>
-  <%- include('player/jsplayer'); %>      
-<% } %>
-<% if('webtorrent' === playermode){ %>
-  <%- include('player/webtorrent'); %>      
-<% } %>
+<section class="container-fluid bg-black">
+  <section class="container-xxl video-container">
+    <section id="video-wrapper">
+      <% if('embed' === playermode){ %>
+        <%- include('player/embed'); %>      
+      <% } %>
+      <% if('jsplayer' === playermode){ %>
+        <%- include('player/jsplayer'); %>      
+      <% } %>
+      <% if('webtorrent' === playermode){ %>
+        <%- include('player/webtorrent'); %>      
+      <% } %>
+    </section>
+  </section>
+</section>

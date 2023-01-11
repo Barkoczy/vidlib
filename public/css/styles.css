@@ -148,9 +148,7 @@ VIDEO WRAPPER
   height: 0;
   overflow: hidden;
 }
-#video-wrapper iframe, 
-#video-wrapper object, 
-#video-wrapper embed,
+#video-wrapper iframe
 #video-wrapper video { 
   position: absolute; 
   top: 0; 
