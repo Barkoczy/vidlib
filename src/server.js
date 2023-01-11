@@ -21,6 +21,7 @@ app.use(cookieParser(process.env.COOKIE_SECRET))
 app.use(templateVariables)
 app.set('views', path.join(__dirname, '/views'))
 app.set('view engine', 'ejs')
+app.set('view options', { rmWhitespace: true })
 app.set('trust proxy', 1)
 
 // @routes
