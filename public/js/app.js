@@ -79,3 +79,6 @@ function loadVideos(list, data) {
     },
   });
 }
+function videoWebTorrentPlayer() {
+  const client = new WebTorrent()
+}

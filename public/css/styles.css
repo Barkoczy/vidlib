@@ -150,7 +150,8 @@ VIDEO WRAPPER
 }
 #video-wrapper iframe, 
 #video-wrapper object, 
-#video-wrapper embed { 
+#video-wrapper embed,
+#video-wrapper video { 
   position: absolute; 
   top: 0; 
   left: 0; 

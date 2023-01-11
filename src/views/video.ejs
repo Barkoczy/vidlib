@@ -6,6 +6,9 @@
     <title><%= video.name %> | <%= appname %></title>
     <%- include('layout/header/favicon'); %>
     <%- include('layout/header/styles'); %>
+    <% if('jsplayer' === playermode){ %>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/video.js/8.0.3/video-js.min.css" integrity="sha512-vkNm+5dH5Ni0XrEMSH75HihdVlK8JuMRXtjA/40w+1UBOxnRKwrYyeIfylt2d7EK+z8uw5BLA4biVJ9War7SRg==" crossorigin="anonymous" referrerpolicy="no-referrer" />      
+    <% } %>
   </head>
   <body class="bg-dark">
     <%- include('components/navbar'); %>
@@ -19,5 +22,12 @@
       </article>
     </main>    
     <%- include('layout/footer/scripts'); %>
+    <% if('jsplayer' === playermode){ %>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/video.js/8.0.3/video.min.js" integrity="sha512-HEai7Wv0f7Hlyi08eZdwJXtsnRErovPR5N1kVUFNJnNZA6LBhlaOEYrjuejFMaN6MqYKyW15FVBidutNBO+Ckg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>     
+    <% } %>
+    <% if('webtorrent' === playermode){ %>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/webtorrent/1.9.6/webtorrent.min.js" integrity="sha512-XF9ds+vUoIZQm451mANDmt7l9JeuCrNWNwSFjQrtp6Vsme9+qlCanROSUNrskIAtJhMEghJ+u3HdxGNB/FcG+w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+      <script>videoWebTorrentPlayer()</script>
+    <% } %>
   </body>
 </html>
