@@ -1,5 +1,15 @@
 # VidLib
-Video library for videos of an account with usage peertube-api.
+Video library for videos of an account with usage Peertube REST API.
+
+## What is PeerTube?
+
+PeerTube allows you to create your own video platform, in complete independence. With PeerTube, no more opaque algorithms or obscure moderation policies! PeerTube platforms you visit are built, managed and moderated by their owners. PeerTube allows platforms to be connected to each other, creating a big network of platforms that are both autonomous and interconnected. Moreover, PeerTube does not depend on any advertising and does not track you!
+
+More information here:
+
+```bash
+https://joinpeertube.org
+```
 
 ## Live demo
 
