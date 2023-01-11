@@ -1,22 +1,28 @@
 # VidLib
 Video library for videos of an account with usage peertube-api.
 
-## Authorization mode
+## Setup
+
+Create .env file and fill empty fields. If needed edit default setup values.
+
+### Setup options
+
+#### Authorization mode
 
 * Strict
 * Credentials
 * Peertube
 * Mixed
 
-## Player mode
+#### Player mode
 
 * Embed
 * JS Player
 * WebTorrent
 
-## Getting Started
+## Quick start development server (Only authorization Strict mode)
 
-First, create .env file and fill empty fields. If needed edit default setup values. Then run the development server:
+Run the development server:
 
 ```bash
 npm run dev
