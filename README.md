@@ -27,7 +27,7 @@ Create .env file and fill empty fields. If needed edit default setup values.
 
 * Strict
 * Credentials
-* Peertube
+* PeerTube
 * Mixed
 
 #### Strict
