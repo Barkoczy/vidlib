@@ -1,5 +1,5 @@
 // @modules
-const peertubeAPI = require('../utils/peertube-api')
+const peertubeAPI = require('../../utils/peertube-api')
 
 // @exports
 module.exports = async (_, res) => {
