@@ -1,6 +1,12 @@
 # VidLib
 Video library for videos of an account with usage peertube-api.
 
+## Live demo
+
+```bash
+https://vidlib.barkoczy.social
+```
+
 ## Setup
 
 Create .env file and fill empty fields. If needed edit default setup values.
