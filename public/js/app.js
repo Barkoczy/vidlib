@@ -1,10 +1,15 @@
 // @var
+const locale = window.navigator.userLanguage || window.navigator.language
+
 let videFilterOptions = {
   include: 0,
   privacyOneOf: 1,
   count: 15,
   sort: '-createdAt'
 }
+
+// @conf
+moment.locale(locale)
 
 // @init
 $(function() {
