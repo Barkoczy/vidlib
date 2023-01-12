@@ -1,6 +1,12 @@
 # VidLib
 Video library for videos of an account based on PeerTube REST API with can usage creator portal. Are you a creator trying to set up memberships? Well, you've come to the right place. This simple app will show you how to create and manage your own memberships.
 
+## Live demo
+
+```bash
+https://vidlib.barkoczy.social
+```
+
 ## What is PeerTube?
 
 PeerTube allows you to create your own video platform, in complete independence. With PeerTube, no more opaque algorithms or obscure moderation policies! PeerTube platforms you visit are built, managed and moderated by their owners. PeerTube allows platforms to be connected to each other, creating a big network of platforms that are both autonomous and interconnected. Moreover, PeerTube does not depend on any advertising and does not track you!
@@ -9,12 +15,6 @@ For more information visit this website:
 
 ```bash
 https://joinpeertube.org
-```
-
-## Live demo
-
-```bash
-https://vidlib.barkoczy.social
 ```
 
 ## Setup
