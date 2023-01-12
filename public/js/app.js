@@ -101,7 +101,6 @@ function videoJSPlayer(source) {
     const defaultOptions = {
       ratio: '16:9',
       autoplay: true,
-      keyboardShortcut: true,
     }
     const hls = new Hls()
 

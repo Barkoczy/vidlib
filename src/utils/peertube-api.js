@@ -132,7 +132,7 @@ async function logout() {
     console.error(`Peertube API Error response: ${err}`)
   }
 }
-async function refresh(refresh_token) {
+async function refresh(token) {
   try {
     const {
       client_id, client_secret
@@ -144,9 +144,7 @@ async function refresh(refresh_token) {
       expires_in,
       refresh_token_expires_in
     } = await tokenWithRefreshToken(
-      client_id, 
-      client_secret,
-      refresh_token
+      client_id, client_secret, token
     )
   
     // to miliseconds

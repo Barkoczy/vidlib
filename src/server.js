@@ -1,8 +1,8 @@
 // @modules
 require('dotenv').config()
-const enums = require('./enums')
 const path = require('path')
 const cookieParser = require('cookie-parser')
+const minifyHTML = require('express-minify-html-3')
 const peertubeAPI = require('./utils/peertube-api')
 const express = require('express')
 const app = express()
@@ -12,6 +12,7 @@ const router = require('./router')
 
 // @middlewares
 const { templateVariables } = require('./middleware/template')
+const { errorHandler } = require('./middleware/error')
 
 // @express
 app.use(
@@ -19,6 +20,18 @@ app.use(
     extended: true,
   })
 )
+app.use(minifyHTML({
+  override:      true,
+  exception_url: false,
+  htmlMinifier: {
+    removeComments:            true,
+    collapseWhitespace:        true,
+    collapseBooleanAttributes: true,
+    removeAttributeQuotes:     true,
+    removeEmptyAttributes:     true,
+    minifyJS:                  true
+  }
+}))
 app.use(express.json())
 app.use('/static', express.static(path.join(__dirname, '../public')))
 app.use(cookieParser(process.env.COOKIE_SECRET))
@@ -32,14 +45,7 @@ app.set('trust proxy', 1)
 app.use('/', router)
 
 // @error-handling
-app.use((err, req, res, next) => {
-  const statusCode = res.statusCode === 200 ? 500 : res.statusCode
-
-  res.status(statusCode).json({
-    message: err.message,
-    stack: enums.ENV.PRODUCTION === process.env.NODE_ENV ? '' : err.stack,
-  })
-})
+app.use(errorHandler)
 
 // @run
 app.listen(process.env.SERVER_PORT, async () => {
