@@ -26,7 +26,7 @@ async function video(videoId) {
     )
     return {content: res2.data.description, ...res.data}
   } catch (err) {
-    console.error(`Peertube API Error response: ${err}`)
+    console.error(`Peertube API: ${err}`)
   }
 }
 async function feeds(
@@ -51,7 +51,7 @@ async function feeds(
       videos: res.data.data
     }
   } catch (err) {
-    console.error(`Peertube API Error response: ${err}`)
+    console.error(`Peertube API: ${err}`)
     return {
       total: 0, videos: []
     }
@@ -64,7 +64,7 @@ async function account(username) {
     )
     return res.data
   } catch (err) {
-    console.error(`Peertube API Error response: ${err}`)
+    console.error(`Peertube API: ${err}`)
     return null
   }
 }
@@ -75,7 +75,7 @@ async function user(userId) {
     )
     return res.data
   } catch (err) {
-    console.error(`Peertube API Error response: ${err}`)
+    console.error(`Peertube API: ${err}`)
     return null
   }
 }
@@ -121,7 +121,7 @@ async function login(username, password) {
       expiresIn
     }
   } catch (err) {
-    console.error(`Peertube API Error response: ${err}`)
+    console.error(`Peertube API: ${err}`)
     return { error: 'Invalid login' }
   }
 }
@@ -129,7 +129,7 @@ async function logout() {
   try {
     await writeCredentialsFile(default_credentials)
   } catch (err) {
-    console.error(`Peertube API Error response: ${err}`)
+    console.error(`Peertube API: ${err}`)
   }
 }
 async function refresh(token) {
@@ -162,7 +162,7 @@ async function refresh(token) {
     // axios authorization
     setAxiosAuthorization(access_token)
   } catch (err) {
-    console.error(`Peertube API Error response: ${err}`)
+    console.error(`Peertube API: ${err}`)
   }
 }
 async function client() {
@@ -172,7 +172,7 @@ async function client() {
     )
     return res.data
   } catch (err) {
-    console.error(`Peertube API Error response: ${err}`)
+    console.error(`Peertube API: ${err}`)
   }
 }
 async function tokenWithPassword(
@@ -194,7 +194,7 @@ async function tokenWithPassword(
   
     return res.data
   } catch (err) {
-    console.error(`Peertube API Error response: ${err}`)
+    console.error(`Peertube API: ${err}`)
   }
 }
 async function tokenWithRefreshToken(
@@ -214,7 +214,7 @@ async function tokenWithRefreshToken(
   
     return res.data
   } catch (err) {
-    console.error(`Peertube API Error response: ${err}`)
+    console.error(`Peertube API: ${err}`)
   }
 }
 async function auth() {

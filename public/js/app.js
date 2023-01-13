@@ -8,6 +8,28 @@ let videFilterOptions = {
   sort: '-createdAt'
 }
 
+let defaultJSPlayerOptions = {
+  ratio: '16:9',
+  autoplay: true,
+  controls: [
+    'play-large', // The large play button in the center
+    'restart', // Restart playback
+    'rewind', // Rewind by the seek time (default 10 seconds)
+    'play', // Play/pause playback
+    'fast-forward', // Fast forward by the seek time (default 10 seconds)
+    'progress', // The progress bar and scrubber for playback and buffering
+    'current-time', // The current time of playback
+    'duration', // The full duration of the media
+    'mute', // Toggle mute
+    'volume', // Volume control
+    'captions', // Toggle captions
+    'settings', // Settings menu
+    'pip', // Picture-in-picture (currently Safari only)
+    'airplay', // Airplay (currently Safari only)
+    'fullscreen', // Toggle fullscreen
+  ]
+}
+
 // @conf
 moment.locale(locale)
 
@@ -92,38 +114,38 @@ function loadFilterVideos(list, data) {
     },
   });
 }
+function videoTranscodingJSPlayer(data) {
+  document.addEventListener('DOMContentLoaded', () => {
+    const video = document.getElementById('jsplayer')
+    
+    if (null === video) return
+
+    const sources = JSON.parse(data)
+
+    const player = new Plyr(video, defaultJSPlayerOptions)
+    
+    player.source = {
+      type: 'video',
+      sources: [{
+        src: sources[0].fileUrl,
+        type: 'video/mp4',
+        size: sources[0].resolution.id
+      }]
+    }
+  })
+}
 function videoJSPlayer(source) {
   document.addEventListener('DOMContentLoaded', () => {
     const video = document.getElementById('jsplayer')
 
+    if (null === video) return
     if (!Hls.isSupported()) return
 
-    const defaultOptions = {
-      ratio: '16:9',
-      autoplay: true,
-    }
     const hls = new Hls()
 
     hls.loadSource(source)
     hls.on(Hls.Events.MANIFEST_PARSED, function(event, data) {
       const availableQualities = hls.levels.map((l) => l.height)
-      defaultOptions.controls = [
-        'play-large', // The large play button in the center
-        'restart', // Restart playback
-        'rewind', // Rewind by the seek time (default 10 seconds)
-        'play', // Play/pause playback
-        'fast-forward', // Fast forward by the seek time (default 10 seconds)
-        'progress', // The progress bar and scrubber for playback and buffering
-        'current-time', // The current time of playback
-        'duration', // The full duration of the media
-        'mute', // Toggle mute
-        'volume', // Volume control
-        'captions', // Toggle captions
-        'settings', // Settings menu
-        'pip', // Picture-in-picture (currently Safari only)
-        'airplay', // Airplay (currently Safari only)
-        'fullscreen', // Toggle fullscreen
-      ]
       defaultOptions.quality = {
         default: availableQualities[availableQualities.length - 1],
         options: availableQualities,

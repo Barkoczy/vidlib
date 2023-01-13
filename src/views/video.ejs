@@ -19,11 +19,18 @@
       </article>
     </main>    
     <%- include('layout/scripts'); %>
-    <% if('jsplayer' === playermode){ %>
-      <script>videoJSPlayer('<%= video.streamingPlaylists[0].playlistUrl %>')</script>
+    <% if (false === video.waitTranscoding){ %>
+      <% if('jsplayer' === playermode){ %>
+        <script>videoJSPlayer('<%= video.streamingPlaylists[0].playlistUrl %>')</script>
+      <% } %>
+      <% if('webtorrent' === playermode){ %>
+        <script>videoWebTorrentPlayer()</script>
+      <% } %>
     <% } %>
-    <% if('webtorrent' === playermode){ %>
-      <script>videoWebTorrentPlayer()</script>
+    <% if (true === video.waitTranscoding){ %>
+      <% if('jsplayer' === playermode){ %>
+        <script>videoTranscodingJSPlayer('<%- JSON.stringify(video.files) %>')</script>
+      <% } %>
     <% } %>
   </body>
 </html>
