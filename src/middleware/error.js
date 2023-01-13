@@ -1,5 +1,6 @@
 // @modules
 require('dotenv').config()
+const enums = require('../enums')
 
 // @exports
 exports.errorHandler = (err, req, res, next) => {
