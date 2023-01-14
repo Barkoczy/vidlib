@@ -1,0 +1,177 @@
+/*
+FONT
+*/
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+/*
+Setup
+*/
+$color-green: rgb(25, 135, 84);
+$color-green-ligth: rgb(10, 211, 118);
+/*
+BODY
+*/
+html,
+body {
+  height: 100vh;
+}
+body {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: #fff;
+}
+@media (min-width: 768px) {
+  body {
+    padding-top: 63px;
+  }
+}
+@media (max-width: 768px) {
+  body {
+    padding-top: 56px;
+  }
+}
+/*
+FORMAT
+*/
+.form-control:focus,
+.form-control:active:focus,
+.form-control.active:focus,
+.form-control.focus,
+.form-control:active.focus,
+.form-control.active.focus {
+  border-color: #ccc;
+  outline: 0;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+.form-select:focus,
+.form-select:active:focus,
+.form-select.active:focus,
+.form-select.focus,
+.form-select:active.focus,
+.form-select.active.focus {
+  border-color: #ccc;
+  outline: 0;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+.btn:focus,
+.btn:active:focus,
+.btn.active:focus,
+.btn.focus,
+.btn:active.focus,
+.btn.active.focus {
+  border-color: #ccc;
+  outline: 0;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+/*
+TYPOGRAPHY
+*/
+a {
+  text-decoration: none;
+  color: #fff;
+}
+/*
+BG-SHAPES
+*/
+.bg-shape-7 {
+  background-image: url('/static/img/shapes/shape_7.png');
+}
+/*
+CONTAINER
+*/
+@media screen and (min-width: 1200px) and (max-height: 860px) {
+  .video-container {
+    max-width: 940px;
+  }
+}
+@media screen and (max-width: 940px) {
+  .video-container {
+    min-width: 100%;
+  }
+}
+/*
+NAVBAR
+*/
+.navbar-brand svg {
+  color: $color-green;
+}
+/*
+FORM
+*/
+.form-signin svg {
+  color: $color-green;
+}
+.form-signin input:focus-within {
+  z-index: 2;
+}
+.form-floating > label {
+  color: #000;
+}
+.form-floating > input {
+  border-radius: 0;
+}
+@media screen and (min-width: 420px) {
+  .form-signin {
+    min-width: 300px;
+  }
+  header .form-search {
+    min-width: 360px;
+  }
+}
+/*
+AVATAR
+*/
+img.avatar {
+  display: inline-block;
+  width: 33px;
+  height: 33px;
+  border-radius: 100%;
+  object-fit: cover;
+}
+/*
+VIDEO CARD
+*/
+.video-card:hover,
+.video-card:focus,
+.video-card:active {
+  color: inherit;
+}
+.video-card .card-text {
+  font-size: .9rem;
+}
+/*
+VIDEO WRAPPER
+*/
+#video-wrapper { 
+  background-color: #000;
+  position: relative;
+  padding-bottom: 56.25%;
+  max-width: 100%;
+  height: 0;
+  overflow: hidden;
+}
+#video-wrapper iframe,
+#video-wrapper video { 
+  position: absolute; 
+  top: 0; 
+  left: 0; 
+  width: 100%; 
+  height: 100%; 
+}
+/*
+PLYR VIDEO PLAYER
+*/
+.plyr__control--overlaid {
+  background: $color-green;
+}
+.plyr--video .plyr__control:hover,
+.plyr--video .plyr__control:focus,
+.plyr--video .plyr__control:active {
+  background: $color-green-ligth;
+}
+.plyr--full-ui input[type="range"] {
+  color: $color-green;
+}

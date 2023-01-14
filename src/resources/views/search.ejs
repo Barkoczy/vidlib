@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="<%= locale %>">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title><%= query %> | <%= appname %></title>
+    <%- include('layout/favicon'); %>
+    <%- include('layout/styles'); %>
+  </head>
+  <body class="bg-dark">
+    <%- include('components/navbar'); %>
+    <main class="container pt-3 pt-md-5 pb-3">
+      <% if(videos.length > 0){ %>
+        <section class="row" data-masonry='{"percentPosition": true }'>
+          <%- include('components/video/list'); %>
+        </section>
+      <% } else{ %>  
+        <div class="alert alert-success" role="alert">
+          Pre hľadaný výraz - <%= query %> - neboli nájdené žiadne výsledky
+        </div>        
+      <% } %>
+    </main>    
+    <%- include('layout/scripts'); %>
+  </body>
+</html>

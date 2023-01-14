@@ -1,0 +1,29 @@
+version: "3.9"
+services:
+  app:
+    container_name: app
+    restart: unless-stopped
+    build:
+      args:
+        user: sammy
+        uid: 1000
+      context: ./
+      dockerfile: Dockerfile
+    ports:
+      - '${SERVER_PORT}:${SERVER_PORT}'
+    networks:
+      - internal
+  mongo:
+    container_name: mongo
+    restart: unless-stopped
+    image: 'bitnami/mongodb:latest'
+    ports:
+      - '27017:27017'
+    volumes:
+      - ./docker-volues/mongodb-persistence:/bitnami/mongodb
+    networks:
+      - internal
+
+networks:
+  internal:
+    driver: bridge

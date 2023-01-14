@@ -94,8 +94,73 @@ PLAYER_MODE=webtorrent
 
 ## Quick start development server (Only authorization Strict mode)
 
+Run webpack bundler:
+
+```bash
+npm run build:webpack:dev
+```
+
 Run the development server:
 
 ```bash
 npm run dev
+```
+
+## Deploy on server
+
+Run webpack bundler;
+
+```bash
+npm run build:webpack:prod
+```
+
+Make build:
+
+```bash
+npm run build
+```
+
+### Run node.js service with systemd
+
+Create service file ==/etc/systemd/system/vidlib.service==:
+
+```bash
+[Unit]
+Description=VidLib
+
+[Service]
+ExecStart=/usr/bin/npx ts-node /var/nodeapp/src/server.ts
+# Required on some systems
+#WorkingDirectory=/var/nodeapp
+Restart=always
+# Restart service after 10 seconds if node service crashes
+RestartSec=10
+# Output to syslog
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=nodejs-example
+#User=<alternate user>
+#Group=<alternate group>
+Environment=NODE_ENV=production
+
+[Install]
+WantedBy=multi-user.target
+```
+
+Enable the service:
+
+```bash
+systemctl enable vidlib.service
+```
+
+Start the service:
+
+```bash
+service vidlib start
+```
+
+or
+
+```bash
+systemctl start nodeserver.service
 ```
