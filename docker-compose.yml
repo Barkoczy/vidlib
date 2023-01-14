@@ -10,7 +10,7 @@ services:
       context: ./
       dockerfile: Dockerfile
     ports:
-      - '${SERVER_PORT}:${SERVER_PORT}'
+      - '${PORT}:${PORT}'
     networks:
       - internal
   mongo:
@@ -20,7 +20,7 @@ services:
     ports:
       - '27017:27017'
     volumes:
-      - ./docker-volues/mongodb-persistence:/bitnami/mongodb
+      - ./docker-volumes/mongodb-persistence:/bitnami/mongodb
     networks:
       - internal
 
