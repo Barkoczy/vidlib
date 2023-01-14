@@ -108,7 +108,7 @@ npm run dev
 
 ## Deploy on server
 
-Run webpack bundler;
+Run webpack bundler:
 
 ```bash
 npm run build:webpack:prod
@@ -122,7 +122,7 @@ npm run build
 
 ### Run node.js service with systemd
 
-Create service file ==/etc/systemd/system/vidlib.service==:
+Create service file /etc/systemd/system/vidlib.service:
 
 ```bash
 [Unit]
