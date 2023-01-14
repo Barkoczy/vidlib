@@ -15,6 +15,6 @@ COPY . .
 
 USER $user
 
-EXPOSE ${SERVER_PORT}
+EXPOSE ${PORT}
 
 CMD ["npm", "start"]
