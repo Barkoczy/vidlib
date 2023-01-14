@@ -5,6 +5,7 @@ import express from 'express';
 import { compress } from 'express-compress';
 import minifyHTML from 'express-minify-html-3';
 import router from './router';
+import apiRouter from './router/api';
 import templateVariables from './middleware/templateVariables';
 import notFound from './middleware/notFound';
 import errorHandler from './middleware/errorHandler';
@@ -48,11 +49,12 @@ app.set('trust proxy', 1);
 
 // @router
 app.use('/', router);
+app.use('/api/v1', apiRouter);
 
 // @notFound
 app.use(notFound);
 
-// @error
+// @errorHandler
 app.use(errorHandler);
 
 // @run

@@ -3,6 +3,8 @@ import '../css/styles.scss';
 
 const locale = window.navigator.userLanguage || window.navigator.language;
 
+const endpoint = '/api/v1';
+
 let videFilterOptions = {
   include: 0,
   privacyOneOf: 1,
@@ -38,7 +40,7 @@ moment.locale(locale);
 // @func
 function loadFilterVideos(list, data) {
   $.ajax({
-    url: '/filter',
+    url: `${endpoint}/video/filter`,
     type: 'POST',
     data,
     dataType: 'HTML',

@@ -1,6 +1,6 @@
 import { Response } from 'express';
-import UserRequest from '../../interfaces/UserRequest';
-import PeerTube from '../../utils/peertube';
+import UserRequest from '../../../../interfaces/UserRequest';
+import PeerTube from '../../../../utils/peertube';
 
 export default async function filterRoute(req: UserRequest, res: Response) {
   const { user } = req;

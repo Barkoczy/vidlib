@@ -2,15 +2,13 @@ import dotenv from 'dotenv';
 import express from 'express';
 import { AuthMode } from '../enums';
 import PeerTube from '../utils/peertube';
-// import sessionAuth from '../middleware/auth/sessionAuth';
-import cookieJwtAuth from '../middleware/auth/cookieJWTAuth';
+import auth from '../middleware/auth';
 
 // @routes
 import signinRoute from './routes/signin';
 import indexRoute from './routes/index';
 import searchRoute from './routes/search';
 import accountRoute from './routes/account';
-import filterRoute from './routes/filter';
 import videoRoute from './routes/video';
 
 // @env
@@ -19,11 +17,10 @@ dotenv.config();
 // @router
 const router = express.Router();
 
-router.get('/', cookieJwtAuth, indexRoute);
-router.get('/account', cookieJwtAuth, accountRoute);
-router.get('/search', cookieJwtAuth, searchRoute);
-router.post('/filter', cookieJwtAuth, filterRoute);
-router.get('/video/:id', cookieJwtAuth, videoRoute);
+router.get('/', auth, indexRoute);
+router.get('/account', auth, accountRoute);
+router.get('/search', auth, searchRoute);
+router.get('/video/:id', auth, videoRoute);
 router.post('/signin', signinRoute);
 router.get('/signin', (req, res) => {
   if (
