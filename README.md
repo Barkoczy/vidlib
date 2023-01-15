@@ -108,6 +108,12 @@ npm run dev
 
 ## Deploy on server
 
+Install dependencies:
+
+```bash
+npm i --save
+```
+
 Run webpack bundler:
 
 ```bash
