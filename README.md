@@ -94,6 +94,12 @@ PLAYER_MODE=webtorrent
 
 ## Quick start development server (Only authorization Strict mode)
 
+Install dependencies:
+
+```bash
+npm i --save
+```
+
 Run webpack bundler:
 
 ```bash
